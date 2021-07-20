@@ -2,24 +2,25 @@ inherited A31PICKIN: TA31PICKIN
   Caption = 'A31PICKIN'
   ClientHeight = 656
   ClientWidth = 1014
+  ExplicitTop = -41
   ExplicitWidth = 1020
   ExplicitHeight = 705
   PixelsPerInch = 96
   TextHeight = 13
   inherited toolbar: TToolBar
     Width = 1014
-    ExplicitWidth = 1004
+    ExplicitWidth = 1014
   end
   inherited statusbar: TStatusBar
     Top = 636
     Width = 1014
     ExplicitTop = 636
-    ExplicitWidth = 1004
+    ExplicitWidth = 1014
   end
   inherited pannello_campi: TRzPanel
     Width = 896
     Height = 602
-    ExplicitWidth = 886
+    ExplicitWidth = 896
     ExplicitHeight = 602
     object RzLabel1: TRzLabel [0]
       Left = 110
@@ -166,7 +167,7 @@ inherited A31PICKIN: TA31PICKIN
           CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
           CaptionTodayBtn = 'oggi'
           CaptionClearBtn = 'annulla'
-          Date = 44369.000000000000000000
+          Date = 44389.000000000000000000
           EditType = etDate
           DropButtonVisible = False
         end
@@ -200,7 +201,7 @@ inherited A31PICKIN: TA31PICKIN
       CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
       CaptionTodayBtn = 'oggi'
       CaptionClearBtn = 'annulla'
-      Date = 44369.000000000000000000
+      Date = 44389.000000000000000000
       EditType = etDate
       DropButtonVisible = False
     end
@@ -249,7 +250,7 @@ inherited A31PICKIN: TA31PICKIN
       CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
       CaptionTodayBtn = 'oggi'
       CaptionClearBtn = 'annulla'
-      Date = 44369.000000000000000000
+      Date = 44389.000000000000000000
       EditType = etDate
       DropButtonVisible = False
     end
@@ -425,7 +426,7 @@ inherited A31PICKIN: TA31PICKIN
     Width = 893
     Height = 365
     ExplicitTop = 180
-    ExplicitWidth = 883
+    ExplicitWidth = 893
     ExplicitHeight = 365
     inherited v_griglia_righe: trzdbgrid_go
       Width = 893
@@ -504,12 +505,13 @@ inherited A31PICKIN: TA31PICKIN
     inherited tab_control_righe: TRzPageControl
       Width = 890
       Height = 89
+      ExplicitWidth = 890
       ExplicitHeight = 89
       FixedDimension = 1
       inherited tab_pagina_righe: TRzTabSheet
         ExplicitLeft = 1
         ExplicitTop = 5
-        ExplicitWidth = 872
+        ExplicitWidth = 886
         ExplicitHeight = 81
         object Label19: TRzLabel
           Left = 5
@@ -777,7 +779,7 @@ inherited A31PICKIN: TA31PICKIN
           TabOrder = 4
         end
         object v_quantita: trzdbnumericedit_go
-          Left = 5
+          Left = 1
           Top = 57
           Width = 91
           Height = 21
@@ -935,6 +937,7 @@ inherited A31PICKIN: TA31PICKIN
           CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
           CaptionTodayBtn = 'oggi'
           CaptionClearBtn = 'annulla'
+          Date = 44389.000000000000000000
           EditType = etDate
           DropButtonVisible = False
         end
@@ -944,7 +947,7 @@ inherited A31PICKIN: TA31PICKIN
   inherited pannello_bottoni_nuovi: TRzPanel
     Left = 896
     Height = 602
-    ExplicitLeft = 886
+    ExplicitLeft = 896
     ExplicitHeight = 602
     inherited tab_pannello_bottoni_nuovi: TRzPageControl
       Height = 534

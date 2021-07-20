@@ -488,7 +488,7 @@ begin
   //-----------------------------------------------------------
   // creo nuovo lotto per quantita prelevata
   //-----------------------------------------------------------
-  progressivo_mmt := movmag.progressivo;
+  progressivo_mmt := movmag.progressivo_mmt;
 
   movmag.progressivo := 0;
   movmag.riga_mmr := 0;
@@ -496,7 +496,7 @@ begin
 
   messaggio(100, 'Generati movimenti di magazzino per collo sfuso/nuovo collo per i pezzi prelevati');
 
-  esegui_programma('GESMOV', progressivo_mmt, true);
+//  esegui_programma('GESMOV', progressivo_mmt, true);
 end;
 
 procedure TA31GESCOLLO.crea_movmag_lotto(tmo_codice, tma_codice, art_codice, lotto, tub_codice: string;
@@ -622,12 +622,7 @@ begin
 
 end;
 
-procedure TA31GESCOLLO.crea_etichetta(art_codice: string;
-  var
-  lotto: string;
-  tma_codice: string;
-  quantita:
-  double);
+procedure TA31GESCOLLO.crea_etichetta(art_codice: string;  var  lotto: string;  tma_codice: string;  quantita:  double);
 var
   progressivo: integer;
 begin

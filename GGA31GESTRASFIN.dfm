@@ -7,7 +7,6 @@ inherited A31GESTRASFIN: TA31GESTRASFIN
   TextHeight = 13
   inherited toolbar: TToolBar
     Width = 829
-    ExplicitTop = -1
     ExplicitWidth = 829
     object tool_genera_lotto: TToolButton
       Left = 186
@@ -22,7 +21,7 @@ inherited A31GESTRASFIN: TA31GESTRASFIN
     Width = 829
     Height = 50
     ExplicitTop = 604
-    ExplicitWidth = 827
+    ExplicitWidth = 829
     ExplicitHeight = 50
   end
   object pannello_collo: TRzPanel [2]
@@ -33,7 +32,6 @@ inherited A31GESTRASFIN: TA31GESTRASFIN
     Align = alTop
     BorderOuter = fsGroove
     TabOrder = 3
-    ExplicitTop = 328
     object RzLabel1: TRzLabel
       Left = 5
       Top = 15
@@ -400,16 +398,15 @@ inherited A31GESTRASFIN: TA31GESTRASFIN
       Margins.Top = 1
       TabStop = False
       DataSource = a31tsu_ds
-      DataField = 'codice_alternativo'
+      DataField = 'CODIFICA_PROMAU'
       ReadOnly = True
       AutoSize = False
-      Color = clYellow
+      Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Microsoft Sans Serif'
       Font.Style = [fsBold]
-      FocusColor = clBtnFace
       ParentFont = False
       ReadOnlyColor = clBtnFace
       ReadOnlyColorOnFocus = True
@@ -423,8 +420,6 @@ inherited A31GESTRASFIN: TA31GESTRASFIN
     Height = 210
     Align = alClient
     TabOrder = 4
-    ExplicitTop = 447
-    ExplicitHeight = 95
     object v_grigliaDB: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = a31trasf_ds
@@ -507,7 +502,7 @@ inherited A31GESTRASFIN: TA31GESTRASFIN
       Transparent = True
     end
     object v_tma_codice: trzdbedit_go
-      Left = 4
+      Left = 2
       Top = 68
       Width = 46
       Height = 21
@@ -553,7 +548,7 @@ inherited A31GESTRASFIN: TA31GESTRASFIN
     end
     object tub_codice_alternativo_sorg: trzdbeditdescrizione_go
       Left = 342
-      Top = 20
+      Top = 24
       Width = 253
       Height = 21
       Hint = '-'
@@ -561,16 +556,15 @@ inherited A31GESTRASFIN: TA31GESTRASFIN
       Margins.Top = 1
       TabStop = False
       DataSource = a31tsu_sorg_ds
-      DataField = 'codice_alternativo'
+      DataField = 'CODIFICA_PROMAU'
       ReadOnly = True
       AutoSize = False
-      Color = clAqua
+      Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -11
       Font.Name = 'Microsoft Sans Serif'
       Font.Style = [fsBold]
-      FocusColor = clBtnFace
       ParentFont = False
       ReadOnlyColor = clBtnFace
       ReadOnlyColorOnFocus = True

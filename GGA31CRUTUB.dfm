@@ -3,7 +3,6 @@ inherited A31CRUTUB: TA31CRUTUB
   Caption = 'A31CRUTUB'
   ClientHeight = 859
   ClientWidth = 1264
-  ExplicitLeft = -167
   ExplicitWidth = 1270
   ExplicitHeight = 908
   PixelsPerInch = 96
@@ -1137,7 +1136,7 @@ inherited A31CRUTUB: TA31CRUTUB
       'TSU.ORDINE=:codice_05'
       ''
       'GROUP BY 1,2,3,4,5,6,7,8'
-      'HAVING SUM(ubm.quantita*ubm.segno) <>0'
+      'HAVING SUM(ubm.quantita*ubm.segno) >0'
       'ORDER BY 1,2'
       '')
     AfterScroll = ubmAfterScroll
@@ -1239,7 +1238,7 @@ inherited A31CRUTUB: TA31CRUTUB
         'TSU_CODICE_05'
       'WHERE'
       'ART_CODICE=:art_codice and'
-      'uni.esistenza<>0'
+      'ubi.esistenza<>0'
       'ORDER BY 1,2')
     AfterCancel = queryAfterScroll
     AfterScroll = ubmaAfterScroll

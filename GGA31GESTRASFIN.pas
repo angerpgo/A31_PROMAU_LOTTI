@@ -697,7 +697,7 @@ begin
       commit_transazione;
       messaggio(100, 'Generati movimenti di trasferimento del collo');
 
-      esegui_programma('GESMOV', progressivo_mmt, true);
+      //      esegui_programma('GESMOV', progressivo_mmt, true);
 
     except
       on e: exception do
@@ -782,10 +782,7 @@ begin
     read_tabella(arc.arcdit, 'tmo', 'codice', tmo_codice);
     if archivio.fieldbyname('esistenza').asstring = 'decrementa' then
     begin
-      //      if not(a31trasf.fieldbyname('tubs_ubicazione_unica').asstring = 'si') and (a31trasf.fieldbyname('tubc_ubicazione_unica').asstring = 'si') then
-      begin
-        crea_lotto(tmo_codice, movmag.art_codice, a31trasf.fieldbyname('lot_codice').asstring, a31trasf.fieldbyname('tma_codice_scarico').asstring, movmag.quantita * -1);
-      end;
+      crea_lotto(tmo_codice, movmag.art_codice, a31trasf.fieldbyname('lot_codice').asstring, a31trasf.fieldbyname('tma_codice_scarico').asstring, movmag.quantita * -1);
       crea_ubm(tmo_codice, movmag.art_codice, a31trasf.fieldbyname('lot_codice').asstring, a31trasf.fieldbyname('tub_codice_scarico').asstring, a31trasf.fieldbyname('tma_codice_scarico').asstring, movmag.quantita * -1);
     end
     else
@@ -812,37 +809,39 @@ begin
   progressivo := 0;
   while progressivo = 0 do
   begin
+
     progressivo := arc.setta_valore_generatore(tmyconnection_go(ltm.connection), 'LTM_CODICE');
-  end;
 
-  read_tabella(ltm, progressivo);
-
-  if ltm.eof then
-  begin
-    ltm.append;
-    ltm.fieldbyname('progressivo').asinteger := progressivo;
-    ltm.fieldbyname('art_codice').asstring := art_codice;
-    ltm.fieldbyname('lotto').asstring := lotto;
-    ltm.fieldbyname('tma_codice').asstring := tma_codice;
-    ltm.fieldbyname('documento_origine').asstring := 'movimenti magazzino';
-    ltm.fieldbyname('doc_progressivo_origine').asinteger := movmag.progressivo_mmt;
-    ltm.fieldbyname('doc_riga_origine').asinteger := movmag.riga;
-    ltm.fieldbyname('data_registrazione').asdatetime := date;
-    ltm.fieldbyname('quantita').asfloat := abs(quantita);
-
-    read_tabella(arc.arcdit, 'tmo', 'codice', tmo_codice);
-    if archivio.fieldbyname('esistenza').asstring = 'incrementa' then
+    read_tabella(ltm, progressivo);
+    if not ltm.eof then
     begin
-      ltm.fieldbyname('quantita_entrate').asfloat := ABS(quantita);
-    end
-    else
-    begin
-      ltm.fieldbyname('quantita_uscite').asfloat := abs(quantita);
+      progressivo := 0;
     end;
-    ltm.fieldbyname('esistenza').asstring := archivio.fieldbyname('esistenza').asstring;
-    ltm.post;
+
   end;
 
+  ltm.append;
+  ltm.fieldbyname('progressivo').asinteger := progressivo;
+  ltm.fieldbyname('art_codice').asstring := art_codice;
+  ltm.fieldbyname('lotto').asstring := lotto;
+  ltm.fieldbyname('tma_codice').asstring := tma_codice;
+  ltm.fieldbyname('documento_origine').asstring := 'movimenti magazzino';
+  ltm.fieldbyname('doc_progressivo_origine').asinteger := movmag.progressivo_mmt;
+  ltm.fieldbyname('doc_riga_origine').asinteger := movmag.riga;
+  ltm.fieldbyname('data_registrazione').asdatetime := date;
+  ltm.fieldbyname('quantita').asfloat := abs(quantita);
+
+  read_tabella(arc.arcdit, 'tmo', 'codice', tmo_codice);
+  if archivio.fieldbyname('esistenza').asstring = 'incrementa' then
+  begin
+    ltm.fieldbyname('quantita_entrate').asfloat := ABS(quantita);
+  end
+  else
+  begin
+    ltm.fieldbyname('quantita_uscite').asfloat := abs(quantita);
+  end;
+  ltm.fieldbyname('esistenza').asstring := archivio.fieldbyname('esistenza').asstring;
+  ltm.post;
 end;
 
 procedure TA31GESTRASFIN.crea_ubm(tmo_codice, art_codice, lotto, tub_codice, tma_codice: string;

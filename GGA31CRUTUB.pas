@@ -449,6 +449,10 @@ end;
 procedure TA31CRUTUB.lotto_codice_controllo(blocco: boolean);
 begin
   tabella_controllo(true, lot, v_lotto, blocco, nil, nil, nil);
+  if v_art_codice.text = '' then
+  begin
+    cerca_lotto(v_lotto.text);
+  end;
 end;
 
 procedure TA31CRUTUB.art_codice_controllo(blocco: boolean);
@@ -637,9 +641,9 @@ procedure TA31CRUTUB.cerca_lotto(lotto: string);
 begin
   if lotto = '' then
   begin
-    messaggio(000, 'Codice Collo non inserito');
-    v_lotto.setfocus;
-    abort;
+    //    messaggio(000, 'Codice Collo non inserito');
+    //    v_lotto.setfocus;
+    exit;
   end;
 
   screen.cursor := crhourglass;
@@ -678,7 +682,7 @@ begin
 
   apri_query;
 
-  query.locate('codice_01;codice_02;codice_03', VarArrayOf([ ubm_ds.dataset.fieldbyname('a31tsu_codice_01').asstring,  ubm_ds.dataset.fieldbyname('a31tsu_codice_02').asstring,  ubm_ds.dataset.fieldbyname('a31tsu_codice_03').asstring]), []);
+  query.locate('codice_01;codice_02;codice_03', VarArrayOf([ubm_ds.dataset.fieldbyname('a31tsu_codice_01').asstring, ubm_ds.dataset.fieldbyname('a31tsu_codice_02').asstring, ubm_ds.dataset.fieldbyname('a31tsu_codice_03').asstring]), []);
 end;
 
 initialization

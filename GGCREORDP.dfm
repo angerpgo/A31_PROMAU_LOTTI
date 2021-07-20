@@ -1,7 +1,7 @@
 inherited CREORDP: TCREORDP
   Caption = 'CREORDP'
   ClientWidth = 994
-  ExplicitWidth = 1010
+  ExplicitWidth = 1000
   PixelsPerInch = 96
   TextHeight = 13
   inherited toolbar: TToolBar
@@ -64,6 +64,8 @@ inherited CREORDP: TCREORDP
       OnEnter = v_grigliaEnter
       OnGetImageIndex = v_grigliaGetImageIndex
       OnGetSelectedIndex = v_grigliaGetImageIndex
+      ExplicitLeft = 3
+      ExplicitTop = 3
     end
     object Panel4: TRzPanel
       Left = 2
@@ -709,7 +711,7 @@ inherited CREORDP: TCREORDP
       end
       object v_selezione: trzcombobox_go
         Left = 5
-        Top = 5
+        Top = 6
         Width = 91
         Height = 21
         Hint = 'tipo selezione'

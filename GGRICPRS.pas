@@ -219,6 +219,7 @@ begin
   assegna_prs(arc.arcdit, 'a31etichette');
   assegna_prs(arc.arcdit, 'a31foglav');
   assegna_prs(arc.arcdit, 'a31pickt');
+  assegna_prs(arc.arcdit, 'a31trasf');
 end;
 
 initialization

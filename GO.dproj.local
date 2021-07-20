@@ -101,8 +101,8 @@
     <Transaction>2021/06/22 10:43:49.000.736,C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31INVUBM.dfm=C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31IMPUBM.dfm</Transaction>
     <Transaction>2021/06/28 16:58:05.000.595,C:\GestionaleOpen\go_1010\src_101002\GGSTANCA.pas=C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGSTANCA.pas</Transaction>
     <Transaction>2021/06/28 16:58:05.000.595,C:\GestionaleOpen\go_1010\src_101002\GGSTANCA.dfm=C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGSTANCA.dfm</Transaction>
-    <Transaction>2021/07/12 15:11:56.183,C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31GESTRASFIN.dfm=C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31GESTRASF.dfm</Transaction>
-    <Transaction>2021/07/12 15:11:56.183,C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31GESTRASFIN.pas=C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31GESTRASF.pas</Transaction>
+    <Transaction>2021/07/12 15:11:56.000.183,C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31GESTRASFIN.dfm=C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31GESTRASF.dfm</Transaction>
+    <Transaction>2021/07/12 15:11:56.000.183,C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31GESTRASFIN.pas=C:\GestionaleOpen\go_utenti\A31_PROMAU\src_101002_LOTTI\GGA31GESTRASF.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="C:\GestionaleOpen"/>
