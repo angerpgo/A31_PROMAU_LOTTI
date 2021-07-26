@@ -171,6 +171,8 @@ uses DMARC, GGA31VISLOT;
 procedure TA31GESTRASFIN.v_aggiungi_lottoClick(Sender: TObject);
 begin
   inherited;
+  tub_codice_sorg_controllo(v_tub_codice_sorg.text);
+  tub_codice_controllo(v_tub_codice_dest.text);
   aggiungi_lotto;
 end;
 
@@ -528,37 +530,51 @@ begin
     codice_ubicazione := v_tub_codice_dest.text;
   end;
 
-  tub_codice_controllo(codice_ubicazione);
+  if v_tub_codice_dest.text <> '' then
+  begin
+    tub_codice_controllo(codice_ubicazione);
+  end;
 
 end;
 
 procedure TA31GESTRASFIN.tub_codice_sorg_controllo(codice_ubicazione: string);
 begin
 
-  if v_tub_codice_sorg.text <> '' then
+  if v_tub_codice_sorg.text = '' then
   begin
+    messaggio(100, 'Codice ubicazione partenza non valido');
+    v_tub_codice_sorg.SetFocus;
+    abort;
+  end;
 
-    read_tabella(a31tsu_sorg, codice_ubicazione);
+  if v_tub_codice_sorg.text = v_tub_codice_dest.text then
+  begin
+    messaggio(100, 'Codice ubicazione partenza uguale a quello di destinanzione. Non valido');
+    v_tub_codice_sorg.SetFocus;
+    abort;
+  end;
+
+  read_tabella(a31tsu_sorg, codice_ubicazione);
+
+  if a31tsu_sorg.fieldbyname('tma_codice').asstring = '' then
+  begin
+    messaggio(100, 'Codice magazzino psrtenza non valido');
+    v_tub_codice_sorg.SetFocus;
+    abort;
   end;
 end;
 
 procedure TA31GESTRASFIN.tub_codice_controllo(codice_ubicazione: string);
 begin
+  read_tabella(a31tsu, codice_ubicazione);
 
-  if v_tub_codice_dest.text <> '' then
+  if a31tsu.fieldbyname('tma_codice').asstring = '' then
   begin
-
-    read_tabella(a31tsu, codice_ubicazione);
-    (*
-      if a31tsu.eof then
-      begin
-      messaggio(000, 'Codice ubicazione non valido');
-      abort;
-      pulisci_ubicazione;
-      v_lotto.setfocus;
-      end;
-    *)
+    messaggio(100, 'Codice magazzino destinanzione non valido');
+    v_tub_codice_dest.SetFocus;
+    abort;
   end;
+
 end;
 
 procedure TA31GESTRASFIN.v_tub_codice_destKeyDown(Sender: TObject; var Key: Word;
@@ -594,7 +610,10 @@ end;
 procedure TA31GESTRASFIN.v_tub_codice_sorgExit(Sender: TObject);
 begin
   inherited;
-  tub_codice_sorg_controllo(v_tub_codice_sorg.text);
+  if v_tub_codice_sorg.text <> '' then
+  begin
+    tub_codice_sorg_controllo(v_tub_codice_sorg.text);
+  end;
 end;
 
 procedure TA31GESTRASFIN.visualizza_lotti(lotti_promau: tlotti_promau);

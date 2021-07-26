@@ -2,7 +2,6 @@ inherited A31PICKIN: TA31PICKIN
   Caption = 'A31PICKIN'
   ClientHeight = 656
   ClientWidth = 1014
-  ExplicitTop = -41
   ExplicitWidth = 1020
   ExplicitHeight = 705
   PixelsPerInch = 96
@@ -78,6 +77,9 @@ inherited A31PICKIN: TA31PICKIN
       ExplicitHeight = 101
       FixedDimension = 18
       inherited tab_pagina1: TRzTabSheet
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
         ExplicitHeight = 81
         object v_l_frn_codice: TRzLabel
           Left = 5
@@ -167,7 +169,7 @@ inherited A31PICKIN: TA31PICKIN
           CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
           CaptionTodayBtn = 'oggi'
           CaptionClearBtn = 'annulla'
-          Date = 44389.000000000000000000
+          Date = 44403.000000000000000000
           EditType = etDate
           DropButtonVisible = False
         end
@@ -201,7 +203,7 @@ inherited A31PICKIN: TA31PICKIN
       CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
       CaptionTodayBtn = 'oggi'
       CaptionClearBtn = 'annulla'
-      Date = 44389.000000000000000000
+      Date = 44403.000000000000000000
       EditType = etDate
       DropButtonVisible = False
     end
@@ -250,7 +252,7 @@ inherited A31PICKIN: TA31PICKIN
       CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
       CaptionTodayBtn = 'oggi'
       CaptionClearBtn = 'annulla'
-      Date = 44389.000000000000000000
+      Date = 44403.000000000000000000
       EditType = etDate
       DropButtonVisible = False
     end
@@ -937,7 +939,7 @@ inherited A31PICKIN: TA31PICKIN
           CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
           CaptionTodayBtn = 'oggi'
           CaptionClearBtn = 'annulla'
-          Date = 44389.000000000000000000
+          Date = 44403.000000000000000000
           EditType = etDate
           DropButtonVisible = False
         end
@@ -956,6 +958,9 @@ inherited A31PICKIN: TA31PICKIN
       ExplicitHeight = 534
       FixedDimension = 19
       inherited tab_pannello_bottoni_nuovi_base: TRzTabSheet
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
         ExplicitHeight = 510
         inherited v_bottone_dati_extra_righe: TRzRapidFireButton
           Top = 484
@@ -963,14 +968,15 @@ inherited A31PICKIN: TA31PICKIN
         end
         object v_genera_lotti: TRzRapidFireButton
           Left = 0
-          Top = 23
+          Top = 25
           Width = 114
           Height = 26
           Hint = 'genera lotti'
           Caption = 'genera colli'
+          OnClick = v_genera_lottiClick
         end
         object v_documento_origine: TRzRapidFireButton
-          Left = 2
+          Left = 0
           Top = 75
           Width = 114
           Height = 26
@@ -1000,19 +1006,19 @@ inherited A31PICKIN: TA31PICKIN
         end
       end
       inherited tab_pannello_bottoni_nuovi_extra: TRzTabSheet
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
         ExplicitHeight = 510
       end
       inherited tab_pannello_ricerca: TRzTabSheet
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
         ExplicitHeight = 510
         inherited lbl_hint: TRzLabel
           Height = 442
           ExplicitHeight = 442
-        end
-        inherited pannello_ricerca: TRzPanel
-          inherited lbl_indice: TRzLabel
-            Width = 50
-            Height = 24
-          end
         end
       end
     end

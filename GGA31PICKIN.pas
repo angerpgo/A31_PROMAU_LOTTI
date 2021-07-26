@@ -92,6 +92,7 @@ type
     procedure v_frn_codiceExit(Sender: TObject);
     procedure v_quantitaExit(Sender: TObject);
     procedure v_nr_colliExit(Sender: TObject);
+    procedure v_genera_lottiClick(Sender: TObject);
   protected
     testo_sql_xxt: string;
     testo_sql_xxr: string;
@@ -251,6 +252,12 @@ procedure TA31PICKIN.v_frn_codiceExit(Sender: TObject);
 begin
   inherited;
   frn_codice_controllo(true);
+end;
+
+procedure TA31PICKIN.v_genera_lottiClick(Sender: TObject);
+begin
+  inherited;
+  genera_lotti;
 end;
 
 procedure TA31PICKIN.v_griglia_righeExit(Sender: TObject);
@@ -690,42 +697,44 @@ var
 begin
   timer1.enabled := false;
 
-  try
+  tma_codice := 'P4';
+  totale_qta := 0;
+  if tabella_righe.fieldbyname('numero_colli').asinteger > 0 then
+  begin
+
     try
-      apri_transazione;
+      try
+        apri_transazione;
 
-      tma_codice := 'P4';
-      totale_qta := 0;
-      quantita_collo := Trunc(tabella_righe.fieldbyname('quantita').asinteger / tabella_righe.fieldbyname('numero_colli').asinteger);
-
-      for collo := 1 to tabella_righe.fieldbyname('numero_colli').asinteger do
-      begin
-
-        if collo < tabella_righe.fieldbyname('numero_colli').asinteger then
+        for collo := 1 to tabella_righe.fieldbyname('numero_colli').asinteger do
         begin
-          crea_etichetta(v_art_codice.text, lotto, tma_codice, quantita_collo);
-        end
-        else
-        begin
-          quantita_collo := tabella_righe.fieldbyname('quantita').asinteger - totale_qta;
-          crea_etichetta(v_art_codice.text, lotto, tma_codice, quantita_collo);
+
+          if collo < tabella_righe.fieldbyname('numero_colli').asinteger then
+          begin
+            crea_etichetta(v_art_codice.text, lotto, tma_codice, quantita_collo);
+          end
+          else
+          begin
+            quantita_collo := tabella_righe.fieldbyname('quantita').asinteger - totale_qta;
+            crea_etichetta(v_art_codice.text, lotto, tma_codice, quantita_collo);
+          end;
+          totale_qta := totale_qta + quantita_collo;
         end;
-        totale_qta := totale_qta + quantita_collo;
-      end;
 
-      commit_transazione;
-    except
-      on e: Exception do
-      begin
-        messaggio(000, 'Errore ' + E.message);
-        try
-          arc.arcdit.rollback;
-        except
+        commit_transazione;
+      except
+        on e: Exception do
+        begin
+          messaggio(000, 'Errore ' + E.message);
+          try
+            arc.arcdit.rollback;
+          except
+          end;
         end;
       end;
+    finally
+      chiudi_transazione;
     end;
-  finally
-    chiudi_transazione;
   end;
 end;
 
