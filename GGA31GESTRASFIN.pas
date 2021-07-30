@@ -96,7 +96,6 @@ type
     v_grigliaDBQUANTITA: TcxGridDBColumn;
     v_grigliaDBCollo: TcxGridDBColumn;
     v_grigliaDBTUB_CODICE_CARICO: TcxGridDBColumn;
-    v_trasferisci_colli: TRzBitBtn;
     v_aggiungi_lotto: TRzBitBtn;
     tub_codice_alternativo_dest: trzdbeditdescrizione_go;
     pannello_ubicazione_sorgente: TRzPanel;
@@ -108,6 +107,7 @@ type
     a31tsu_sorg: TMyQuery_go;
     a31tsu_sorg_ds: TMyDataSource;
     lot: TMyQuery_go;
+    v_trasferisci_colli: TRzBitBtn;
     procedure v_aggiungi_lottoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -512,6 +512,8 @@ procedure TA31GESTRASFIN.v_trasferisci_colliClick(Sender: TObject);
 begin
   inherited;
   trasferisci_lotto;
+
+
 end;
 
 procedure TA31GESTRASFIN.v_tub_codice_destEnter(Sender: TObject);
@@ -532,7 +534,7 @@ begin
 
   if v_tub_codice_dest.text <> '' then
   begin
-    tub_codice_controllo(codice_ubicazione);
+    tub_codice_controllo( v_tub_codice_dest.text);
   end;
 
 end;
@@ -664,7 +666,7 @@ begin
 
   end;
 
-  pulisci_ubicazione;
+//  pulisci_ubicazione;
   pulisci_lotto;
   chiudi_tabelle;
 end;
@@ -728,6 +730,8 @@ begin
 
   finally
     chiudi_transazione;
+    pulisci_ubicazione;
+    pulisci_lotto;
   end;
 end;
 
@@ -775,7 +779,7 @@ begin
   while not a31trasf.eof do
   begin
 
-    movmag.riga := movmag.riga + 11;
+    movmag.riga := movmag.riga + 1;
     movmag.art_codice := a31trasf.fieldbyname('art_codice').asstring;
     movmag.tma_codice_mmr := tma_codice;
     movmag.quantita := a31trasf.fieldbyname('quantita').asfloat;

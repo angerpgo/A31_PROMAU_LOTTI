@@ -705,7 +705,7 @@ begin
     try
       try
         apri_transazione;
-
+        quantita_collo := trunc(tabella_righe.fieldbyname('quantita').asinteger / tabella_righe.fieldbyname('nr_colli').asinteger);
         for collo := 1 to tabella_righe.fieldbyname('numero_colli').asinteger do
         begin
 
@@ -764,6 +764,7 @@ begin
     query.parambyname('art_codice').asstring := art_codice;
     query.open;
   *)
+
   a31etichette.close;
   a31etichette.parambyname('progressivo').asinteger := progressivo;
   a31etichette.open;

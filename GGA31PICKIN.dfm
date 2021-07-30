@@ -77,9 +77,6 @@ inherited A31PICKIN: TA31PICKIN
       ExplicitHeight = 101
       FixedDimension = 18
       inherited tab_pagina1: TRzTabSheet
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
         ExplicitHeight = 81
         object v_l_frn_codice: TRzLabel
           Left = 5
@@ -169,7 +166,7 @@ inherited A31PICKIN: TA31PICKIN
           CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
           CaptionTodayBtn = 'oggi'
           CaptionClearBtn = 'annulla'
-          Date = 44403.000000000000000000
+          Date = 44407.000000000000000000
           EditType = etDate
           DropButtonVisible = False
         end
@@ -203,7 +200,7 @@ inherited A31PICKIN: TA31PICKIN
       CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
       CaptionTodayBtn = 'oggi'
       CaptionClearBtn = 'annulla'
-      Date = 44403.000000000000000000
+      Date = 44407.000000000000000000
       EditType = etDate
       DropButtonVisible = False
     end
@@ -252,7 +249,7 @@ inherited A31PICKIN: TA31PICKIN
       CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
       CaptionTodayBtn = 'oggi'
       CaptionClearBtn = 'annulla'
-      Date = 44403.000000000000000000
+      Date = 44407.000000000000000000
       EditType = etDate
       DropButtonVisible = False
     end
@@ -939,7 +936,7 @@ inherited A31PICKIN: TA31PICKIN
           CalendarElements = [ceYear, ceMonth, ceArrows, ceDaysOfWeek, ceFillDays, ceTodayButton]
           CaptionTodayBtn = 'oggi'
           CaptionClearBtn = 'annulla'
-          Date = 44403.000000000000000000
+          Date = 44407.000000000000000000
           EditType = etDate
           DropButtonVisible = False
         end
@@ -958,9 +955,6 @@ inherited A31PICKIN: TA31PICKIN
       ExplicitHeight = 534
       FixedDimension = 19
       inherited tab_pannello_bottoni_nuovi_base: TRzTabSheet
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
         ExplicitHeight = 510
         inherited v_bottone_dati_extra_righe: TRzRapidFireButton
           Top = 484
@@ -1006,9 +1000,6 @@ inherited A31PICKIN: TA31PICKIN
         end
       end
       inherited tab_pannello_bottoni_nuovi_extra: TRzTabSheet
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
         ExplicitHeight = 510
       end
       inherited tab_pannello_ricerca: TRzTabSheet

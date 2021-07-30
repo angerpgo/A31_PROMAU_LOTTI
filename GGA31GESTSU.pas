@@ -26,8 +26,6 @@ type
     RzLabel1: TRzLabel;
     v_codice_05: trzdbedit_go;
     query_ri: TMyQuery_go;
-    RzLabel2: TRzLabel;
-    v_codifica_promau: trzdbedit_go;
     procedure v_codice_01Exit(Sender: TObject);
     procedure v_codice_02Exit(Sender: TObject);
     procedure v_codice_03Exit(Sender: TObject);

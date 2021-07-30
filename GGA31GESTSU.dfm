@@ -2,10 +2,10 @@ inherited A31GESTSU: TA31GESTSU
   Left = 356
   Top = 210
   Caption = 'A31GESTSU'
-  ClientHeight = 233
+  ClientHeight = 189
   ClientWidth = 781
   ExplicitWidth = 787
-  ExplicitHeight = 282
+  ExplicitHeight = 238
   PixelsPerInch = 96
   TextHeight = 13
   inherited toolbar: TToolBar
@@ -21,14 +21,14 @@ inherited A31GESTSU: TA31GESTSU
     end
   end
   inherited statusbar: TStatusBar
-    Top = 213
+    Top = 169
     Width = 781
     ExplicitTop = 213
     ExplicitWidth = 781
   end
   inherited pannello_campi: TRzPanel
     Width = 663
-    Height = 179
+    Height = 135
     ExplicitWidth = 663
     ExplicitHeight = 179
     object Label2: TRzLabel [0]
@@ -42,37 +42,29 @@ inherited A31GESTSU: TA31GESTSU
       Transparent = True
     end
     inherited tab_control: TRzPageControl
-      Top = 50
+      Top = 56
       Width = 663
-      Height = 129
+      Height = 79
       TabOrder = 1
-      ExplicitTop = 50
+      ExplicitTop = 100
       ExplicitWidth = 663
-      ExplicitHeight = 129
+      ExplicitHeight = 79
       FixedDimension = 18
       inherited tab_pagina1: TRzTabSheet
         ExplicitLeft = -3
         ExplicitTop = 14
         ExplicitWidth = 661
-        ExplicitHeight = 109
+        ExplicitHeight = 108
         object RzLabel1: TRzLabel
-          Left = 5
-          Top = 50
+          Left = 3
+          Top = 10
           Width = 29
           Height = 13
           Caption = 'ordine'
         end
-        object RzLabel2: TRzLabel
-          Left = 3
-          Top = 7
-          Width = 75
-          Height = 13
-          Caption = 'codifica promau'
-          Transparent = True
-        end
         object v_ordine: trzdbnumericedit_go
-          Left = 5
-          Top = 66
+          Left = 3
+          Top = 26
           Width = 65
           Height = 21
           Hint = '[Alt+Gi'#249'=apre calcolatrice]'
@@ -87,29 +79,10 @@ inherited A31GESTSU: TA31GESTSU
           ParentFont = False
           ReadOnlyColor = clBtnFace
           ReadOnlyColorOnFocus = True
-          TabOrder = 1
+          TabOrder = 0
           AllowBlank = False
           IntegersOnly = False
           DisplayFormat = ',0.00;-,0.00;#'
-        end
-        object v_codifica_promau: trzdbedit_go
-          Left = 5
-          Top = 23
-          Width = 443
-          Height = 21
-          Hint = 'descrizione breve'
-          DataSource = tabella_ds
-          DataField = 'CODIFICA_PROMAU'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Microsoft Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          ReadOnlyColor = clBtnFace
-          ReadOnlyColorOnFocus = True
-          TabOrder = 0
-          OnExit = v_descrizioneExit
         end
       end
     end
@@ -270,11 +243,11 @@ inherited A31GESTSU: TA31GESTSU
   end
   inherited pannello_bottoni_nuovi: TRzPanel
     Left = 663
-    Height = 179
+    Height = 135
     ExplicitLeft = 663
     ExplicitHeight = 179
     inherited tab_pannello_bottoni_nuovi: TRzPageControl
-      Height = 153
+      Height = 109
       ExplicitHeight = 153
       FixedDimension = 19
       inherited tab_pannello_bottoni_nuovi_base: TRzTabSheet
@@ -284,6 +257,9 @@ inherited A31GESTSU: TA31GESTSU
         ExplicitHeight = 129
       end
       inherited tab_pannello_bottoni_nuovi_extra: TRzTabSheet
+        ExplicitLeft = 1
+        ExplicitTop = 23
+        ExplicitWidth = 116
         ExplicitHeight = 129
       end
       inherited tab_pannello_ricerca: TRzTabSheet
@@ -292,7 +268,7 @@ inherited A31GESTSU: TA31GESTSU
         ExplicitWidth = 116
         ExplicitHeight = 129
         inherited lbl_hint: TRzLabel
-          Height = 61
+          Height = 17
           ExplicitHeight = 61
         end
         inherited pannello_ricerca: TRzPanel

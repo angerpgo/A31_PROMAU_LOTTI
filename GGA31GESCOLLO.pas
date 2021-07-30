@@ -71,8 +71,8 @@ type
     v_art_descrizione1: trzdbeditdescrizione_go;
     v_art_descrizione2: trzdbeditdescrizione_go;
     RzLabel6: TRzLabel;
+    v_ristampa_eti: TRzBitBtn;
     procedure v_genera_lottoClick(Sender: TObject);
-    procedure v_quantita_prelevataExit(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -80,6 +80,7 @@ type
     procedure v_lottoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure v_lottoExit(Sender: TObject);
+    procedure v_ristampa_etiClick(Sender: TObject);
   protected
     flag_barcode128: boolean;
     flag_barcode_promau: boolean;
@@ -99,6 +100,7 @@ type
     procedure crea_movmag_lotto(tmo_codice, tma_codice, art_codice, lotto, tub_codice: string; quantita, quantita_prelevata: double);
     procedure crea_lotto(tmo_codice, art_codice, lotto, tma_codice: string; quantita: double);
     procedure crea_etichetta(art_codice: string; var lotto: string; tma_codice: string; quantita: double);
+    procedure ristampa_etichetta;
   public
     { Public declarations }
   end;
@@ -116,13 +118,14 @@ uses DMARC, GGA31VISLOT;
 procedure TA31GESCOLLO.v_genera_lottoClick(Sender: TObject);
 begin
   inherited;
+  quantita_prelevata_controllo;
   genera_lotto;
 end;
 
-procedure TA31GESCOLLO.v_quantita_prelevataExit(Sender: TObject);
+procedure TA31GESCOLLO.v_ristampa_etiClick(Sender: TObject);
 begin
   inherited;
-  quantita_prelevata_controllo;
+  ristampa_etichetta;
 end;
 
 procedure TA31GESCOLLO.quantita_prelevata_controllo;
@@ -320,12 +323,6 @@ begin
     end
     else
     begin
-
-      if tub.fieldbyname('ubicazione_unica').asstring = 'si' then
-      begin
-        v_genera_lotto.enabled := false;
-        //  messaggio(000, 'Ubicazione ' + v_tub_codice.text + ' non gestisce multiubicazioni');
-      end;
       v_genera_lotto.enabled := true;
     end;
     v_quantita_prelevata.setfocus;
@@ -483,7 +480,7 @@ begin
   //-----------------------------------------------------------
   // creo movimento per lotto sfuso  per quantita-quantita prelevata
   //-----------------------------------------------------------
-  crea_movmag_lotto('G-', v_tma_codice.text, v_art_codice.text,v_lotto.text, v_tub_codice.text, v_quantita.value, v_quantita_prelevata.value);
+  crea_movmag_lotto('G-', v_tma_codice.text, v_art_codice.text, v_lotto.text, v_tub_codice.text, v_quantita.value, v_quantita_prelevata.value);
 
   //-----------------------------------------------------------
   // creo nuovo lotto per quantita prelevata
@@ -496,7 +493,7 @@ begin
 
   messaggio(100, 'Generati movimenti di magazzino per collo sfuso/nuovo collo per i pezzi prelevati');
 
-//  esegui_programma('GESMOV', progressivo_mmt, true);
+  //  esegui_programma('GESMOV', progressivo_mmt, true);
 end;
 
 procedure TA31GESCOLLO.crea_movmag_lotto(tmo_codice, tma_codice, art_codice, lotto, tub_codice: string;
@@ -622,7 +619,7 @@ begin
 
 end;
 
-procedure TA31GESCOLLO.crea_etichetta(art_codice: string;  var  lotto: string;  tma_codice: string;  quantita:  double);
+procedure TA31GESCOLLO.crea_etichetta(art_codice: string; var lotto: string; tma_codice: string; quantita: double);
 var
   progressivo: integer;
 begin
@@ -674,12 +671,21 @@ begin
     a31etichette.fieldbyname('codice_articolo_cliente').asstring := query.fieldbyname('codice_articolo_cliente').asstring;
     a31etichette.fieldbyname('quantita').asfloat := quantita;
     a31etichette.fieldbyname('numero_etichette').asfloat := 1;
+    a31etichette.fieldbyname('documento_origine').asstring := 'a31gescollo';
     a31etichette.post;
   end;
 
   a31etichette.close;
   a31etichette.open;
   lotto := a31etichette.fieldbyname('lot_codice').asstring;
+end;
+
+procedure TA31GESCOLLO.ristampa_etichetta;
+var
+  lotto: string;
+begin
+  lotto := v_lotto.text;
+  crea_etichetta(v_art_codice.text, lotto, v_tma_codice.text, v_quantita.value);
 end;
 
 initialization
